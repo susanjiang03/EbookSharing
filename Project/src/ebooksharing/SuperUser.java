@@ -18,7 +18,7 @@ import javax.swing.*;
 import net.proteanit.sql.DbUtils;
 
 
-public class SU_notification extends javax.swing.JFrame {
+public class SuperUser extends javax.swing.JFrame {
     
     Connection conn=null;
     ResultSet rs=null;
@@ -27,7 +27,7 @@ public class SU_notification extends javax.swing.JFrame {
     /**
      * Creates new form notification
      */
-    public SU_notification() {
+    public SuperUser() {
         initComponents();
        conn=DbConnector.Connects();
         pendingbooks();
@@ -1290,14 +1290,18 @@ public class SU_notification extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SU_notification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuperUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SU_notification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuperUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SU_notification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuperUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SU_notification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuperUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1306,7 +1310,7 @@ public class SU_notification extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SU_notification().setVisible(true);
+                new SuperUser().setVisible(true);
             }
         });
     }
