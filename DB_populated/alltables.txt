@@ -1,0 +1,132 @@
+
+
+CREATE TABLE UserInfo
+(
+uID SMALLINT NOT NULL
+GENERATED ALWAYS AS IDENTITY,
+username VARCHAR(20) NOT NULL PRIMARY KEY ,
+password VARCHAR(20) ,
+email    VARCHAR(50) ,
+firstname VARCHAR(20),
+lastname  VARCHAR(20),
+is_SU BOOLEAN,
+point_balance SMALLINT DEFAULT 0
+);
+
+
+CREATE TABLE BookInfo
+(
+bookID  SMALLINT NOT NULL PRIMARY KEY
+GENERATED ALWAYS AS IDENTITY
+(START WITH 1, INCREMENT BY 1),
+bookname VARCHAR(100) ,
+cover BLOB ,
+author VARCHAR(50),
+summary VARCHAR(1000),
+bookfile BLOB,
+uploader VARCHAR(20) ,
+reward_points SMALLINT ,
+reading_points SMALLINT ,
+reading_counts SMALLINT,
+last_date_read DATE,
+reading_total_duration BIGINT,
+rating FLOAT,
+rating_counts SMALLINT,
+FOREIGN KEY (uploader) REFERENCES UserInfo(username)
+);
+
+
+
+CREATE TABLE Review_Rating(
+rrID INT NOT NULL PRIMARY KEY
+GENERATED ALWAYS AS IDENTITY
+(START WITH 1, INCREMENT BY 1),
+bookID SMALLINT ,
+username VARCHAR(20),
+review_text VARCHAR(1000),
+rating SMALLINT,
+FOREIGN KEY (username) REFERENCES UserInfo(username),
+FOREIGN KEY (bookID) REFERENCES BookInfo(bookID)
+);
+
+
+
+CREATE TABLE ReadingHistory(
+rhID INT NOT NULL PRIMARY KEY
+GENERATED ALWAYS AS IDENTITY
+(START WITH 1, INCREMENT BY 1),
+username VARCHAR(20) ,
+bookID SMALLINT,
+reading_duration INT,
+FOREIGN KEY (username) REFERENCES UserInfo(username),
+FOREIGN KEY(bookID) REFERENCES BookInfo(bookID)
+);
+
+
+
+CREATE TABLE PendingBook(
+pbID INT NOT NULL PRIMARY KEY
+GENERATED ALWAYS AS IDENTITY
+(START WITH 1, INCREMENT BY 1),
+uploader VARCHAR(20) ,
+bookname VARCHAR(50) ,
+cover BLOB,
+author VARCHAR(50),
+summary VARCHAR(1000),
+bookfile BLOB ,
+request_points SMALLINT ,
+granted_points SMALLINT,
+FOREIGN KEY(uploader) REFERENCES UserInfo(username)
+);
+
+
+
+CREATE TABLE Message(
+mID INT NOT NULL PRIMARY KEY
+GENERATED ALWAYS AS IDENTITY
+(START WITH 1, INCREMENT BY 1),
+sender VARCHAR(20) ,
+receiver VARCHAR(20) ,
+message_txt VARCHAR(500) ,
+FOREIGN KEY(sender) REFERENCES UserInfo(username),
+FOREIGN KEY(receiver) REFERENCES UserInfo(username)
+);
+
+
+CREATE TABLE Invitation(
+iID INT NOT NULL PRIMARY KEY
+GENERATED ALWAYS AS IDENTITY
+(START WITH 1, INCREMENT BY 1),
+inviter VARCHAR(20),
+invitee VARCHAR(20),
+bookID SMALLINT,
+sharing_points SMALLINT,
+FOREIGN KEY(bookID) REFERENCES BookInfo(bookID),
+FOREIGN KEY(inviter) REFERENCES UserInfo(username),
+FOREIGN KEY(invitee) REFERENCES UserInfo(username)
+);
+
+CREATE TABLE complaint(
+cID INT NOT NULL PRIMARY KEY
+GENERATED ALWAYS AS IDENTITY
+(START WITH 1, INCREMENT BY 1),
+username VARCHAR(20),
+bookID SMALLINT,
+complaint_text VARCHAR(1000),
+FOREIGN KEY(username) REFERENCES UserInfo(username),
+FOREIGN KEY(bookID) REFERENCES BookInfo(bookID)
+);
+
+
+CREATE TABLE BlackList(
+blID INT NOT NULL PRIMARY KEY
+GENERATED ALWAYS AS IDENTITY
+(START WITH 1, INCREMENT BY 1),
+email VARCHAR(50)
+);
+
+
+
+
+
+
