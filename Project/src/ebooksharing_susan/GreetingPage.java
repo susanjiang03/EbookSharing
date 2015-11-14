@@ -5,6 +5,7 @@
  */
 package ebooksharing_susan;
 
+import ebooksharing_injit.*;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 

@@ -10,7 +10,8 @@ email    VARCHAR(50) ,
 firstname VARCHAR(20),
 lastname  VARCHAR(20),
 is_SU BOOLEAN,
-point_balance SMALLINT DEFAULT 0
+point_balance SMALLINT DEFAULT 0,
+got_complainted SMALL DEFAULT 0
 );
 
 

@@ -3,7 +3,6 @@
   <persistence-unit name="EbookSharingPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>ebooksharing_injit.Bookinfo</class>
-    <class>ebooksharing_susan.Blacklist</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/EbookSharing"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
