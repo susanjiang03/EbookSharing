@@ -8,10 +8,12 @@ password VARCHAR(20) ,
 email    VARCHAR(50) ,
 firstname VARCHAR(20),
 lastname  VARCHAR(20),
-is_SU BOOLEAN,
-point_balance SMALLINT DEFAULT 0,f
-got_complainted SMALLINT DEFAULT 0
+is_SU BOOLEAN DEFAULT FALSE,
+point_balance SMALLINT DEFAULT 0,
+book_got_removed SMALLINT DEFAULT 0,
+in_blacklist BOOLEAN DEFAULT FALSE
 );
+
 
 
 CREATE TABLE BookInfo
@@ -23,15 +25,17 @@ bookname VARCHAR(100) ,
 cover BLOB ,
 author VARCHAR(50),
 summary VARCHAR(1000),
+category VARCHAR(20),
 bookfile BLOB,
 uploader VARCHAR(20) ,
-reward_points SMALLINT ,
-reading_points SMALLINT ,
-reading_counts SMALLINT,
+reward_points SMALLINT DEFAULT 0 ,
+reading_points SMALLINT DEFAULT 0,
+reading_counts SMALLINT DEFAULT 0,
 last_date_read DATE,
-reading_total_duration BIGINT,
-rating FLOAT,
-rating_counts SMALLINT,
+reading_total_duration BIGINT DEFAULT 0,
+rating FLOAT DEFAULT 0.0,
+rating_counts SMALLINT DEFAULT 0,
+got_complainted SMALLINT DEFAULT 0,
 FOREIGN KEY (uploader) REFERENCES UserInfo(username)
 );
 
@@ -73,9 +77,11 @@ bookname VARCHAR(50) ,
 cover BLOB,
 author VARCHAR(50),
 summary VARCHAR(1000),
+category VARCHAR(200),
 bookfile BLOB ,
-request_points SMALLINT ,
-granted_points SMALLINT,
+request_points SMALLINT DEFAULT 0,
+granted_points SMALLINT DEFAULT 0,
+reading_points SMALLINT DEFAULT 0,
 FOREIGN KEY(uploader) REFERENCES UserInfo(username)
 );
 
@@ -117,13 +123,6 @@ FOREIGN KEY(username) REFERENCES UserInfo(username),
 FOREIGN KEY(bookID) REFERENCES BookInfo(bookID)
 );
 
-
-CREATE TABLE BlackList(
-blID INT NOT NULL PRIMARY KEY
-GENERATED ALWAYS AS IDENTITY
-(START WITH 1, INCREMENT BY 1),
-email VARCHAR(50)
-);
 
 
 
