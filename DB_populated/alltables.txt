@@ -61,9 +61,10 @@ GENERATED ALWAYS AS IDENTITY
 (START WITH 1, INCREMENT BY 1),
 username VARCHAR(20) ,
 bookID SMALLINT,
+bookName VARCHAR(100),
+category VARCHAR(20),
 reading_duration INT,
-FOREIGN KEY (username) REFERENCES UserInfo(username),
-FOREIGN KEY(bookID) REFERENCES BookInfo(bookID)
+FOREIGN KEY (username) REFERENCES UserInfo(username)
 );
 
 
