@@ -30,7 +30,7 @@ public class GenerateDummyTextFiles {
         //set how many files you want to generate
         int number_of_files=50;
        //characters
-         String c="abcdefghijklmnopqrstuvwxyz";
+         String c="abcdef ghijklm nopq rst uvw xyz";
     
        //generate files 
         for(int file=1;file<=number_of_files;file++){
@@ -38,32 +38,19 @@ public class GenerateDummyTextFiles {
      
                 //initial dummy_text of the file
                 String  dummy_text="";
-      
-                //get a random number of words in range (2000,3000);
-                int number_of_words=(int)(Math.random()*2000+1000);
+     
+                //random num in 8000,10000
+                int num=(int)(Math.random()*8000+2000);
                 
-                //generate random words, append to text
-                for(int word=1;word<number_of_words;word++){
-                    
-                    String dummy_word="";
-                    
-                    //generate random character for each word in length(0,1)
-                    for(int length=1;length<(int)(Math.random()*20);length++){
-                        
-                        //append random character to random_word
-                        dummy_word+=c.charAt((int)(Math.random()*26));
-                        
-                    }
-                    
-                    //append to dummy_text
-                    dummy_text+=dummy_word+" ";
+               //append random character to random_word
+                for(int i=1;i<num;i++){
                   
-                    
+                    dummy_text+=c.charAt((int)(Math.random()*(c.length())));
                 } 
-               
-                
+        
                  //write files  bookfile_file.txt
               String fileName="bookfile_"+file+".txt";
+              
                try {  
                 
                 BufferedWriter fw=new BufferedWriter(new FileWriter(fileName)); 
