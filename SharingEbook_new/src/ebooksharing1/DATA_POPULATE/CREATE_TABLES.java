@@ -126,6 +126,7 @@ public class CREATE_TABLES {
 "invitee VARCHAR(20),\n" +
 "bookID SMALLINT,\n" +
 "sharing_points SMALLINT,\n" +
+"status VARCHAR(20),\n" +              
 "FOREIGN KEY(bookID) REFERENCES BookInfo(bookID),\n" +
 "FOREIGN KEY(inviter) REFERENCES UserInfo(username),\n" +
 "FOREIGN KEY(invitee) REFERENCES UserInfo(username)\n" +
